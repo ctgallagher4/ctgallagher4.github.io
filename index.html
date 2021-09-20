@@ -1,22 +1,61 @@
 <!DOCTYPE html>
 <html>
+<style>
+
+body ul li {
+    list-style: none;
+}
+body ul li a:link, body a:visited {
+  text-decoration:none;
+  background-color : grey;
+  border: 2px solid black;
+  color: black;
+  display: block;
+  width: 200px;
+  height: 30px;
+  text-align: center;
+  margin-bottom: 2px;
+  cursor: pointer;
+}
+
+body ul li a:hover, body a:active {
+  background-color: white;
+  color: blue;
+  font-weight: bold;
+}
+
+body {
+    text-align: center
+}
+
+ul {
+  text-align:center;
+  display:inline-block;
+
+}
+
+</style>
 <head>
   <title> Charlie Gallagher</title>
 </head>
-<body>
-  <h1> Main Page</h1>
-  <p> Hello, my name is Charlie and I am interested in Data Science 
-    and Software Engineering. You can use the following links to access:
-      <ul>
-        <li><a href ="resume.html" title ="Resume">My resume (In Progress)</a></li>
-        <li><a href ="https://github.com/ctgallagher4" title ="My Github">My Github</a></li>
-        <li><a href ="projects.html" title ="My Projects"> My Projects (In Progress)</a></li>
-        <li><a href ="courses.html" title ="Coursework"> My potentially relevant coursework
-            (In Progress)</a></li>
-      </ul>
+<body >
+  <h1> Charlie Gallagher </h1>
+  <img src="image.jpg" alt="me" width = 400 height = 400>
+  <p>
+      Hello there, my name is Charlie and I am a rising 
+      first year masters student at the University of Chicago
+      in the <a href ="https://masters.cs.uchicago.edu/" title ="UChicago">
+      Masters Program in Computer Science.</a>.
   </p>
-    
 
+  <div>
+    <ul>
+      <li><a href ="resume.html" title ="Resume">Resume</a></li>
+      <li><a href ="https://github.com/ctgallagher4" title ="My Github">Github</a></li>
+      <li><a href ="projects.html" title ="My Projects"> Projects</a></li>
+      <li><a href ="courses.html" title ="Coursework"> Coursework</a></li>
+    </ul>
+  </div>
 </body>
 </html>
 
