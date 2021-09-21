@@ -1,63 +1,59 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Charlie Gallagher</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
 <style>
 
 body ul li {
     list-style: none;
 }
-body ul li a:link, body a:visited {
+body a:link, body a:visited {
   text-decoration:none;
   background-color : grey;
   border: 2px solid black;
   color: black;
   display: block;
-  width: 200px;
-  height: 30px;
+  width: 100%;
   text-align: center;
-  margin-bottom: 2px;
+  margin-right:auto;
+  margin-left: auto;
   cursor: pointer;
 }
 
-body ul li a:hover, body a:active {
-  background-color: white;
+body ul li a:hover, body ul li a:active {
+  background-color: rgb(158, 158, 158);
   color: blue;
   font-weight: bold;
 }
 
-body {
-    text-align: center
-}
 
-ul {
-  text-align:center;
-  display:inline-block;
-
-}
 
 </style>
-<head>
-  <title> Charlie Gallagher</title>
-</head>
-<body >
-  <h1> Hello! </h1>
-  <img src="image.jpg" alt="me" width = 400 height = 400>
-  <p>
-      My name is Charlie and I am a rising 
-      first year masters student at the University of Chicago
-      in the <a href ="https://masters.cs.uchicago.edu/" title ="UChicago" 
-      style ='text-decoration: none;'> Masters Program in Computer Science</a>.
-      My undergraduate degree was in Physics and also from UChicago. I am interested
-      in data science and software engineering.
+<html>
+    <body>
+        <div id = 'canvas' style = ' position: absolute; z-index: 0;'>
+            <canvas id = 'c'></canvas>
+        </div>
+        
+        <div style='right: 0; left: 0; top: 300px; bottom: 0px; position: absolute; z-index: 1; margin-right: 
+            auto; width: 50%; margin-left:auto;'>
+            <ul>
+                <li><a href ="resume.html" title ="Resume">Resume</a></li>
+                <li><a href ="https://github.com/ctgallagher4" title ="My Github">Github</a></li>
+                <li><a href ="projects.html" title ="My Projects"> Projects</a></li>
+                <li><a href ="courses.html" title ="Coursework"> Coursework</a></li>
+            </ul>
+        </div>
+        </body>
+        </div>
+    </body>
+</html>
+<!-- partial -->
+  <script  src="./script.js"></script>
 
-  </p>
-  <div>
-    <ul>
-      <li><a href ="resume.html" title ="Resume">Resume</a></li>
-      <li><a href ="https://github.com/ctgallagher4" title ="My Github">Github</a></li>
-      <li><a href ="projects.html" title ="My Projects"> Projects</a></li>
-      <li><a href ="courses.html" title ="Coursework"> Coursework</a></li>
-    </ul>
-  </div>
 </body>
 </html>
-
