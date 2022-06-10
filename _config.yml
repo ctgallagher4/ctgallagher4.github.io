@@ -23,7 +23,7 @@ github_username:  ctgallagher4
 linkedin_username: charles-gallagher-9891a414a
 # Build settings
 markdown: kramdown
-remote_theme: minima
+theme: minima
 plugins:
   - jekyll-feed
 
