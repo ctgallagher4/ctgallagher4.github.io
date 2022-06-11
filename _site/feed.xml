@@ -1,4 +1,29 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-06-11T13:52:41-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Projects</title><subtitle>This is a personal website for projects, coursework, and my resume.</subtitle><entry><title type="html">Solar System Simulation Using Runge-Kutta Methods: An Implementation in Python and C</title><link href="http://localhost:4000/blog/post/2022/06/09/Solar-System-Animation-Using-RK-4-Methods.html" rel="alternate" type="text/html" title="Solar System Simulation Using Runge-Kutta Methods: An Implementation in Python and C" /><published>2022-06-09T23:40:01-05:00</published><updated>2022-06-09T23:40:01-05:00</updated><id>http://localhost:4000/blog/post/2022/06/09/Solar-System-Animation-Using-RK-4-Methods</id><content type="html" xml:base="http://localhost:4000/blog/post/2022/06/09/Solar-System-Animation-Using-RK-4-Methods.html"><![CDATA[<p><img src="http://localhost:4000/image2.png" alt="simulation" style="display:block; margin-left:auto; margin-right:auto" /></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-06-11T18:30:15-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Projects</title><subtitle>This is a personal website for projects, coursework, and my resume.</subtitle><entry><title type="html">Predicting Wildfires in Australia Using Historical Weather Data</title><link href="http://localhost:4000/blog/post/2022/06/11/Predicting-Wildfires-in-Australia.html" rel="alternate" type="text/html" title="Predicting Wildfires in Australia Using Historical Weather Data" /><published>2022-06-11T13:54:20-05:00</published><updated>2022-06-11T13:54:20-05:00</updated><id>http://localhost:4000/blog/post/2022/06/11/Predicting-Wildfires-in-Australia</id><content type="html" xml:base="http://localhost:4000/blog/post/2022/06/11/Predicting-Wildfires-in-Australia.html"><![CDATA[<h2 id="about">About</h2>
+
+<p>In this project, I use historical weather data from an IBM spot challenge (here). To predict the occurence of a wildfire in a given state on a given day in Australia. A variety of methods were used for this project. These include a data table pivot, VIF
+analysis, non-randomized train/test split, multinomial logistic regression (MAXENT), extreme
+gradient boost classification (XGBoost), multi-layer perceptron classification (MLP), k-nearest
+neighbors classification (KNN), random forest classification (RF), logistic generalized additive
+models classification (LogisticGAM), tree based classification (TR), support vector classification
+(SVC), naive Bayes classification (NB), extreme gradient boosting-random forest ensemble
+methods (XGBRF), experimentation with bagging and importance, and experimentation with
+logisticGAM over various time intervals. Data was split into 70%, 20%, and 10% training,
+validation, and test sets respectively. Because the data are sequential in time, it was necessary to
+avoid predicting the past with the future. So data were split sequentially so that the ordinal
+position was preserved across training, validation, and test sets. Further, the 70% training set was
+split into a 50% and 20% (total) subtraining training and subtraining testing sets. In this way, a
+“competition” was performed between models. The 50/20 split was used to test hyperparameters.
+The resultant model was then trained on the 70% training set, tested on the validation set, and
+compared to all other models. The most successful of these was trained on the training and
+validation sets concatenated together and tested on the test set. You can find the notebook on my <a href="https://github.com/ctgallagher4/">github</a>. This project was done for a class called Data Analysis in UChicago’s MPCS. With more time, I would have cleaned up my code, tested more hyper-parameters, and explored more methods for parameter selection. This was the first machine learning project I ever attempted. At the very least, I learned how to use scikit-learn!</p>
+
+<h2 id="results">Results</h2>
+
+<p>After much pivoting, cleaning, transforming, renaming, and model selecting, I found that the most perfomant model was the random forest classifier (RF) with default hyperparameters. This led to a no-fire prediction precision of 0.76 and a fire prediction precision of 0.91. Further, a no-fire recall of 0.83 and a fire recall of 0.87 were recorded with an overall accuracy of 0.8521 and an AUC-ROC of 0.9277.</p>
+
+<h2 id="paper">Paper</h2>
+
+<object data="http://localhost:4000/FinalPaper.pdf" width="1000" height="1000" type="application/pdf"></object>]]></content><author><name></name></author><category term="Blog" /><category term="Post" /><summary type="html"><![CDATA[About]]></summary></entry><entry><title type="html">Solar System Simulation Using Runge-Kutta Methods: An Implementation in Python and C</title><link href="http://localhost:4000/blog/post/2022/06/09/Solar-System-Animation-Using-RK-4-Methods.html" rel="alternate" type="text/html" title="Solar System Simulation Using Runge-Kutta Methods: An Implementation in Python and C" /><published>2022-06-09T23:40:01-05:00</published><updated>2022-06-09T23:40:01-05:00</updated><id>http://localhost:4000/blog/post/2022/06/09/Solar-System-Animation-Using-RK-4-Methods</id><content type="html" xml:base="http://localhost:4000/blog/post/2022/06/09/Solar-System-Animation-Using-RK-4-Methods.html"><![CDATA[<p><img src="http://localhost:4000/image2.png" alt="simulation" style="display:block; margin-left:auto; margin-right:auto" /></p>
 
 <h1 id="introduction">Introduction</h1>
 

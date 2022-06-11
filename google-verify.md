@@ -1,5 +1,0 @@
-
-
-<head>
-    google-site-verification: googlecf1c1c38e2750841.html
-<\head>
