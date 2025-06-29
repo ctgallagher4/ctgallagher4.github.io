@@ -1,5 +1,6 @@
 import { defineConfig } from "vite";
 import tailwindcss from "@tailwindcss/vite";
+
 export default defineConfig({
   plugins: [tailwindcss()],
   publicDir: "public",
@@ -12,7 +13,7 @@ export default defineConfig({
       input: {
         main: "index.html",
         blog: "blog.html",
-        welcome: "./public/pages/welcome.html",
+        // welcome: resolve(__dirname, "public/pages/welcome.html"),
       },
     },
   },

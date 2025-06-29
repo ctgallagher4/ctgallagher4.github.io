@@ -2,7 +2,7 @@ const menu = document.getElementById("blog-menu");
 
 const articles = [
   { name: "Building a drone with Rust!", file: "drone.html" },
-  { name: "Building a markdown blog!", file: "blog.html" },
+  { name: "Building a markdown blog!", file: "blog-tutorial.html" },
 ];
 
 for (const [index, article] of articles.entries()) {
