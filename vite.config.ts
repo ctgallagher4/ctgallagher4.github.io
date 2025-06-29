@@ -13,8 +13,8 @@ export default defineConfig({
       input: {
         main: "index.html",
         blog: "blog.html",
-        // welcome: resolve(__dirname, "public/pages/welcome.html"),
       },
     },
   },
+  base: "/",
 });

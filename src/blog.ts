@@ -7,7 +7,7 @@ const articles = [
 
 for (const [index, article] of articles.entries()) {
   const a = document.createElement("a");
-  a.href = "/public/pages/" + article.file;
+  a.href = "/pages/" + article.file;
   a.innerText = (index + 1).toString() + ".) " + article.name;
   menu?.appendChild(a);
 }
