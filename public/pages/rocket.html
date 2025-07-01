@@ -1,0 +1,81 @@
+
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+          <meta charset="UTF-8" />
+          <title>rocket</title>
+          <link href="/src/style.css" type="text/css" rel="stylesheet" />
+          <link href="https://unpkg.com/prismjs@1.29.0/themes/prism-tomorrow.css" rel="stylesheet" />
+          <script src="https://unpkg.com/prismjs@1.29.0/prism.js"></script>
+          <script src="https://unpkg.com/prismjs@1.29.0/components/prism-rust.min.js"></script>
+        </head>
+        <body class="markdown-body">
+          <div class="markdown flex flex-col mr-auto">
+            <button
+              id="dark-mode-toggle"
+              class="fixed top-4 right-4 bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200 px-3 py-1 rounded shadow"
+            >
+              Toggle Dark Mode
+            </button>
+            <h1>The Math Behind Rocket</h1>
+<p>If you have taken high school trig, you know enough to build something like
+Asteroids in Rust, but just in case you&#39;ve mixed up sin and cos over the
+years, I decided to make this page to explain. This page will mostly focus
+on drawing, but I will also touch on basic mechanics. In other words,
+how do you get a basic acceleration effect, and how do you keep movement
+frame rate independent?</p>
+<h2>Drawing The Player</h2>
+<p>Checking out the implementation of <code>Drawable</code> for <code>Player</code> in <code>player.rs</code> we have:</p>
+<pre><code class="language-Rust">fn draw(&amp;mut self, canvas: &amp;mut Canvas&lt;Window&gt;) {
+    let top_x = self.x + self.bearing.cos() * SHIP_SIZE;
+    let top_y = self.y + self.bearing.sin() * SHIP_SIZE;
+
+    let top = FPoint::new(top_x.round(), top_y.round());
+    let bot_left = calculate_point(self.x, self.y, self.bearing, 200.0);
+    let bot_right = calculate_point(self.x, self.y, self.bearing, 160.0);
+    let points_array = [top, bot_left, bot_right, top];
+    canvas
+        .draw_lines(&amp;points_array[..])
+        .expect(&quot;No driver error!&quot;);
+}
+</code></pre>
+<p>We also have the helper function:</p>
+<pre><code class="language-Rust">/// A helper method to calculate the player&#39;s triangle.
+fn calculate_point(x: f32, y: f32, bear: f32, deg: f32) -&gt; FPoint {
+    let (left_x, left_y) = (
+        (x + (deg * 2.0 * PI / 360.0 + bear).cos() * SHIP_SIZE),
+        (y + (deg * 2.0 * PI / 360.0 + bear).sin() * SHIP_SIZE),
+    );
+    FPoint::new(left_x, left_y)
+}
+</code></pre>
+<p>What is this code doing? Well, you can think of it as taking the player&#39;s center (x, y) position, drawing a circle around it of size <code>SHIP_SIZE</code>, connecting three points on the circle at 0, 160, and 200 degrees, and then rotating this triangle according to the player&#39;s bearing. This allows us to draw the player in any position. If you are wondering, &quot;but what&#39;s a bearing?&quot; that&#39;s just the direction the player is facing in degrees. 0 is up towards the top of the screen and 180 is down towards the bottom.</p>
+<h2>Drawing an Asteroid</h2>
+<p>** In Progress **</p>
+
+          </div>
+          <script> 
+  const toggle = document.getElementById('dark-mode-toggle');
+  const root = document.documentElement;
+
+  // Initialize from localStorage
+  if (localStorage.theme === 'dark') {
+    root.classList.add('dark');
+  }
+
+  toggle.addEventListener('click', () => {
+    if (root.classList.contains('dark')) {
+      root.classList.remove('dark');
+      localStorage.theme = 'light';
+    } else {
+      root.classList.add('dark');
+      localStorage.theme = 'dark';
+    }
+  });
+ </script>
+          <footer class="mt-16 py-6 text-center text-sm text-gray-500 dark:text-gray-400">
+            © 2025 Charlie Gallagher All rights reserved.
+          </footer>
+        </body>
+        </html>
+      

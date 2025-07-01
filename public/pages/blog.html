@@ -1,0 +1,149 @@
+
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+          <meta charset="UTF-8" />
+          <title>blog</title>
+          <link href="/src/style.css" type="text/css" rel="stylesheet" />
+          <link href="https://unpkg.com/prismjs@1.29.0/themes/prism-tomorrow.css" rel="stylesheet" />
+          <script src="https://unpkg.com/prismjs@1.29.0/prism.js"></script>
+          <script src="https://unpkg.com/prismjs@1.29.0/components/prism-rust.min.js"></script>
+        </head>
+        <body class="markdown-body">
+          <div class="markdown flex flex-col mr-auto">
+            <button
+              id="dark-mode-toggle"
+              class="fixed top-4 right-4 bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200 px-3 py-1 rounded shadow"
+            >
+              Toggle Dark Mode
+            </button>
+            <h1>How to Build a Simple Markdown Blog</h1>
+<p>This blog works by taking markdown files, converting them to html, and styling them with css at build time. I use TailwindCSS for this and I will be assuming that is what you are using too, but this should work with or without any css framework.</p>
+<h2>Setup</h2>
+<p>First, in the root of your website&#39;s repository, you should create a folder called <code>/content</code>. This is where you will place all of your markdown files. Next, you should create a folder called <code>/scripts</code>, if you do not have it already. Now, create a script called <code>generate.ts</code> within the <code>/scripts</code>. You should feel free to tweak this however you like, but the basic pieces are:</p>
+<ul>
+<li>importing <code>marked</code></li>
+<li>setting up our input and output directories</li>
+<li>defining some light scripting for our markdown page</li>
+<li>converting our html to markdown</li>
+<li>inserting those markdown and script strings into a simple string of html * writing the string to a file in the public directory.</li>
+</ul>
+<p>I&#39;ve broken the script down into sections below.</p>
+<h3>Imports</h3>
+<pre><code class="language-javascript">import fs from &quot;fs-extra&quot;;
+import path from &quot;path&quot;;
+import { marked } from &quot;marked&quot;;
+import { fileURLToPath } from &quot;url&quot;;
+</code></pre>
+<h3>Setting up Input and Output Directories</h3>
+<pre><code class="language-javascript">const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const inputDir = path.resolve(__dirname, &quot;../content/&quot;);
+const outputDir = path.resolve(__dirname, &quot;../public/pages&quot;);
+</code></pre>
+<h3>Creating Some Light scripting</h3>
+<p>In this case I setup some scripting that allows us to toggle light and dark mode.</p>
+<pre><code class="language-javascript">const script = `
+  const toggle = document.getElementById(&#39;dark-mode-toggle&#39;);
+  const root = document.documentElement;
+
+  // Initialize from localStorage
+  if (localStorage.theme === &#39;dark&#39;) {
+    root.classList.add(&#39;dark&#39;);
+  }
+
+  toggle.addEventListener(&#39;click&#39;, () =&gt; {
+    if (root.classList.contains(&#39;dark&#39;)) {
+      root.classList.remove(&#39;dark&#39;);
+      localStorage.theme = &#39;light&#39;;
+    } else {
+      root.classList.add(&#39;dark&#39;);
+      localStorage.theme = &#39;dark&#39;;
+    }
+  });
+`;
+</code></pre>
+<h3>Putting It All Together</h3>
+<p>You will notice several <code>link</code> and <code>script</code> tags. Styling with tailwind is as simple as linking to your <code>style.css</code>! Just be sure to include html in the public directory in your <code>tailwind.config.ts</code>. The next few are links and scripts for code syntax highlighting. Without this, it would be up to us to color <code>const</code> purple for example, or the <code>=</code> blue. It would be very tedious to get right for all the popular programming lanugages.</p>
+<pre><code class="language-javascript">async function buildPages() {
+  await fs.ensureDir(outputDir);
+  const files = await fs.readdir(inputDir);
+
+  for (const file of files) {
+    if (file.endsWith(&quot;.md&quot;)) {
+      const markdown = await fs.readFile(path.join(inputDir, file), &quot;utf-8&quot;);
+      const html = marked(markdown);
+
+      // inserting the markdown and script strings
+      const pageHtml = `
+        &lt;!DOCTYPE html&gt;
+        &lt;html lang=&quot;en&quot;&gt;
+        &lt;head&gt;
+          &lt;meta charset=&quot;UTF-8&quot; /&gt;
+          &lt;title&gt;${file.replace(&quot;.md&quot;, &quot;&quot;)}&lt;/title&gt;
+          &lt;link href=&quot;/src/style.css&quot; type=&quot;text/css&quot; rel=&quot;stylesheet&quot; /&gt;
+          &lt;link href=&quot;https://unpkg.com/prismjs@1.29.0/themes/prism-tomorrow.css&quot; rel=&quot;stylesheet&quot; /&gt;
+          &lt;script src=&quot;https://unpkg.com/prismjs@1.29.0/prism.js&quot;&gt;&lt;/script&gt;
+          &lt;script src=&quot;https://unpkg.com/prismjs@1.29.0/components/prism-rust.min.js&quot;&gt;&lt;/script&gt;
+        &lt;/head&gt;
+        &lt;body class=&quot;markdown-body&quot;&gt;
+          &lt;div class=&quot;markdown flex flex-col mr-auto&quot;&gt;
+            &lt;button
+              id=&quot;dark-mode-toggle&quot;
+              class=&quot;fixed top-4 right-4 bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200 px-3 py-1 rounded shadow&quot;
+            &gt;
+              Toggle Dark Mode
+            &lt;/button&gt;
+            ${html}
+          &lt;/div&gt;
+          &lt;script&gt; ${script} &lt;/script&gt;
+          &lt;footer class=&quot;mt-16 py-6 text-center text-sm text-gray-500 dark:text-gray-400&quot;&gt;
+            © 2025 Charlie Gallagher All rights reserved.
+          &lt;/footer&gt;
+        &lt;/body&gt;
+        &lt;/html&gt;
+      `;
+
+      // writing to the public directory
+      const outputPath = path.join(outputDir, file.replace(&quot;.md&quot;, &quot;.html&quot;));
+      await fs.writeFile(outputPath, pageHtml);
+      console.log(`✅ Generated ${outputPath}`);
+    }
+  }
+}
+
+buildPages().catch((err) =&gt; {
+  console.error(&quot;❌ Build failed:&quot;, err);
+  process.exit(1);
+});
+</code></pre>
+<h2>Building</h2>
+<p>I prefer to run my TypeScript scripts with <code>tsx</code>. It is as easy as <code>npm install -g tsx</code>. You could easily add building with <code>tsx /scripts/generate.ts</code> to your CI/CD pipeline, even on github pages, although that is beyond the scope of this post.</p>
+
+          </div>
+          <script> 
+  const toggle = document.getElementById('dark-mode-toggle');
+  const root = document.documentElement;
+
+  // Initialize from localStorage
+  if (localStorage.theme === 'dark') {
+    root.classList.add('dark');
+  }
+
+  toggle.addEventListener('click', () => {
+    if (root.classList.contains('dark')) {
+      root.classList.remove('dark');
+      localStorage.theme = 'light';
+    } else {
+      root.classList.add('dark');
+      localStorage.theme = 'dark';
+    }
+  });
+ </script>
+          <footer class="mt-16 py-6 text-center text-sm text-gray-500 dark:text-gray-400">
+            © 2025 Charlie Gallagher All rights reserved.
+          </footer>
+        </body>
+        </html>
+      
