@@ -1,1 +1,0 @@
-import"./style-D3pzpCcA.js";const i=document.getElementById("blog-menu"),o=[{name:"Building a drone with Rust!",file:"drone.html"},{name:"Building a markdown blog!",file:"blog-tutorial.html"}];for(const[t,n]of o.entries()){const e=document.createElement("a");e.href="/pages/"+n.file,e.innerText=(t+1).toString()+".) "+n.name,i?.appendChild(e)}
