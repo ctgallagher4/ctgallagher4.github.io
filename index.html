@@ -13,6 +13,17 @@
                 class="bg-black w-screen h-screen z-0 fixed top-0 left-0"
             ></div>
 
+            <canvas
+                id="canvas"
+                class="bg-transparent w-screen h-screen z-50 fixed top-0 left-0 pointer-events-none"
+            ></canvas>
+
+            <div
+                class="fixed top-12 px-15 -right-20 bg-red-500 text-white rotate-45 z-50 text-sm"
+            >
+                UNDER DEVELOPMENT
+            </div>
+
             <div
                 class="bg-black w-[95%] mx-4 md:mx-0 md:w-[80%] max-w-[1000px] h-full z-10 relative flex flex-col"
             >
@@ -21,36 +32,19 @@
                         class="w-fit h-fit z-10 text-white mt-40 mr-auto clip-jagged"
                     >
                         <div
-                            class="text-3xl md:text-4xl lg:text-5xl font-extrabold"
+                            class="text-5xl md:text-6xl lg:text-7xl font-extrabold"
                         >
                             Charlie Gallagher
                         </div>
                         <div
-                            class="text-sm md:text-lg lg:text-2xl font-semibold text-emerald-400"
+                            class="text-lg md:text-2xl lg:text-3xl font-semibold text-orange-400"
                         >
-                            Rust, Python, and Typescript Developer
+                            Software Engineer
                         </div>
                     </div>
-                    <div class="text-white text-2xl font-semibold m-auto pt-10">
-                        <button class="hover:underline hover:scale-110">
-                            <a
-                                href="https://www.linkedin.com/in/charles-gallagher-9891a414a/"
-                                target="_blank"
-                                class="[text-shadow:_0_40px_50px#10b981] text-white text-lg"
-                            >
-                                Contact Me
-                            </a>
-                        </button>
-                    </div>
                 </div>
 
-                <div class="relative h-[3px] z-0 opacity-50 w-full m-auto">
-                    <div
-                        class="absolute inset-0 bg-emerald-400 transform skew-y-0 origin-top"
-                    ></div>
-                </div>
-
-                <div class="mt-10 text-emerald-400 text-2xl font-semibold">
+                <div class="mt-10 text-orange-400 text-2xl font-semibold">
                     About Me
                 </div>
                 <div class="mt-2 text-white text-md font-semibold">
@@ -65,7 +59,7 @@
                     currently working on a flight control system for a
                     quadcopter.
                 </div>
-                <div class="mt-10 text-emerald-400 text-2xl font-semibold">
+                <div class="mt-10 text-orange-400 text-2xl font-semibold">
                     Experience
                 </div>
                 <div
@@ -89,7 +83,7 @@
                     <div class="ml-auto my-auto">2019</div>
                 </div>
 
-                <div class="mt-10 text-emerald-400 text-2xl font-semibold">
+                <div class="mt-10 text-orange-400 text-2xl font-semibold">
                     Education
                 </div>
                 <div
@@ -118,7 +112,7 @@
                 <template id="project-card">
                     <div class="flex aspect-square m-2">
                         <div
-                            class="bg-black hover:shadow-2xl shadow-emerald-400 m-auto hover:scale-110 flex min-w-[50px] w-[65px] md:w-[130px] lg:w-[200px] aspect-square border-3 border-white rounded-lg"
+                            class="bg-black m-auto hover:scale-110 flex min-w-[50px] w-[65px] md:w-[130px] lg:w-[200px] aspect-square border-3 border-white rounded-lg"
                         >
                             <a
                                 class="px-1 font-semibold m-auto text-center text-[8px] md:text-sm lg:text-lg hover:underline"
@@ -127,19 +121,20 @@
                     </div>
                 </template>
 
-                <div class="mt-10 text-emerald-400 text-2xl font-semibold">
+                <div class="mt-10 text-orange-400 text-2xl font-semibold">
                     Open Source Contributions
                 </div>
                 <div class="mt-2 text-white text-md font-semibold">
                     I am interested in a variety of crates, libraries, and
-                    packages.
+                    packages. Some of these I have contributed to and some of
+                    them I created.
                 </div>
                 <div
                     class="w-full h-fit mt-10 m-2 text-white"
                     id="open-source-prs"
                 ></div>
 
-                <div class="mt-10 text-emerald-400 text-2xl font-semibold">
+                <div class="mt-10 text-orange-400 text-2xl font-semibold">
                     Projects
                 </div>
                 <div class="mt-2 text-white text-md font-semibold">
@@ -151,7 +146,7 @@
                     id="projects"
                 ></div>
 
-                <div class="mt-10 text-emerald-400 text-2xl font-semibold">
+                <div class="mt-10 text-orange-400 text-2xl font-semibold">
                     Blog
                 </div>
                 <div class="mt-2 text-white text-md font-semibold">
@@ -162,8 +157,22 @@
                 </div>
                 <div
                     id="blog-menu"
-                    class="mt-4 ml-2 text-white text-md w-fit min-h-[300px] mr-auto flex flex-col text-left"
+                    class="mt-4 ml-2 text-white text-md w-fit mr-auto flex flex-col text-left"
                 ></div>
+
+                <div
+                    class="my-10 text-orange-400 text-2xl font-semibold w-full h-full flex"
+                >
+                    <button class="hover:underline hover:scale-110 m-auto">
+                        <a
+                            href="https://www.linkedin.com/in/charles-gallagher-9891a414a/"
+                            target="_blank"
+                            class="text-lg"
+                        >
+                            Contact Me
+                        </a>
+                    </button>
+                </div>
             </div>
         </div>
         <script type="module" src="/src/main.ts"></script>
