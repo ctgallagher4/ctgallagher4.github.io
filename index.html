@@ -7,130 +7,165 @@
         <link href="/src/style.css" type="text/css" rel="stylesheet" />
         <title>Charlie Gallagher, SWE</title>
     </head>
-        <div>
-            <div class=" h-fit flex flex-col bg-[#EAEAE8]">
-                <div
-                    class="fixed w-full h-[100px] bg-black shadow-2xl border-black border-b-1 flex flex-row gap-2 z-50"
-                >
-                    <button
-                        id="about-button"
-                        class="bg-[#EAEAE8] text-[10px] sm:text-lg lg:text-xl  border rounded-lg p-2 ml-auto my-auto hover:scale-110"
-                    >
-                        About
-                    </button>
-                    <button
-                        id="code-button"
-                        class="bg-[#EAEAE8] text-[10px] sm:text-lg lg:text-xl border rounded-lg p-2 my-auto hover:scale-110"
-                    >
-                        Code
-                    </button>
-                    <button
-                        id="contact-button"
-                        class="bg-[#EAEAE8] text-[10px] sm:text-lg lg:text-xl border rounded-lg p-2 my-auto hover:scale-110"
-                    >
-                        Contact
-                    </button>
-                    <a href="/blog.html" class="w-fit h-fit my-auto">
-                        <button
-                            class="bg-[#EAEAE8] text-[10px] sm:text-lg lg:text-xl border rounded-lg p-2 my-auto hover:scale-110"
-                        >
-                            Blog
-                        </button>
-                    </a>
-                    <button
-                        class="bg-[#EAEAE8] text-[10px] sm:text-lg lg:text-xl border rounded-lg mr-2 p-2 my-auto hover:scale-110"
-                    >
-                        GitHub
-                    </button>
-                </div>
-                <div class="flex flex-row">
-                    <div class="sm:w-[25%] hidden w-0 sm:flex flex-col h-screen fixed pt-[25px] text-white shadow-2xl">
-                        <div class="w-full h-full border-r flex flex-col bg-black border-black">
-                            <div class="pt-[100px] m-auto text-center text-xs md:text-lg p-2">
-                                <div class="hover:scale-110 max-w-[400px] w-[80%] mx-auto object-contain rounded-full overflow-clip">
-                                    <img src="/flying.JPG"/>
-                                </div>
-                                <p class="w-fit h-fit mx-auto mt-4"> Flying solo around 2018! </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    <body>
+        <div class="flex flex-col items-center">
+            <div
+                class="bg-black w-screen h-screen z-0 fixed top-0 left-0"
+            ></div>
 
-                    <div id="about-section" class="w-fit h-fit sm:ml-[30%] lg:pt-[100px]">
+            <div
+                class="bg-black w-[95%] mx-4 md:mx-0 md:w-[80%] max-w-[1000px] h-full z-10 relative flex flex-col"
+            >
+                <div class="flex flex-row m-auto w-full h-full">
+                    <div
+                        class="w-fit h-fit z-10 text-white mt-40 mr-auto clip-jagged"
+                    >
                         <div
-                            class="w-[100%] sm:w-[80%] h-fit m-auto px-2"
+                            class="text-3xl md:text-4xl lg:text-5xl font-extrabold"
                         >
-                            <div
-                                class="mx-auto w-full h-screen bg-[#EAEAE8] border-b flex"
-                            >
-                                <div class="text-2xl md:text-6xl lg:text-8xl w-fit my-auto h-fit">
-                                    Hello there!
-                                    <div
-                                        class="text-xs md:text-sm lg:text-lg w-fit h-fit mt-10 ml-1"
-                                    >
-                                        My name is Charlie Gallagher. I am a Software
-                                        Engineer who specializes in Rust, but I also use
-                                        Python, TypeScript, and many other libraries and
-                                        frameworks. Over the past year, I have been using
-                                        Rust professionally for everything from data
-                                        pipelines, web servers, and desktop applications to
-                                        continuous detection pipelines running on embedded
-                                        hardware. In my free time, I enjoy using the Embassy
-                                        embedded Rust framework to program microcontrollers.
-                                        I am currently working on a flight control system
-                                        for a quadcopter.
-                                    </div>
-                                </div>
-                            </div>
-
-                            <template id="project-row">
-                                <div class="h-[20%] w-full grid grid-cols-5"></div>
-                            </template>
-
-                            <template id="project-card">
-                                <div class="flex aspect-square m-2">
-                                    <div
-                                        class="shadow-2xl m-auto hover:scale-110 flex min-w-[50px] w-[65px] md:w-[130px] lg:w-[200px] aspect-square border border-black rounded-lg"
-                                    >
-                                        <p
-                                            class="m-auto text-center text-[8px] md:text-sm lg:text-lg"
-                                        ></p>
-                                    </div>
-                                </div>
-                            </template>
-
-                            <div
-                                id="code-section"
-                                class="w-full h-fit flex flex-col border-b"
-                            >
-                                <div class="flex flex-col w-full h-fit my-40">
-                                    <p class="w-fit h-fit text-4xl">
-                                        Open Source Contributions:
-                                    </p>
-                                    <div
-                                        class="w-full h-fit mt-10 m-2"
-                                        id="open-source-prs"
-                                    ></div>
-                                </div>
-                                <div class="flex flex-col w-full h-fit mb-40">
-                                    <p class="w-fit h-fit text-4xl">Projects:</p>
-                                    <div class="w-full h-fit mt-10 m-1" id="projects"></div>
-                                </div>
-                            </div>
-
-                            <div
-                                id="contact-section"
-                                class="w-full h-full flex my-[500px] justify-center"
-                            >
-                               <p class="m-auto">You can contact me on <a class="underline text-blue-500" href="https://www.linkedin.com/in/charles-gallagher-9891a414a/">LinkedIn</a> or at my email: Charlie Tango Gulf Alpha Lima Lima 4 @ Gulf Mike Alpha Indigo Lima . Charlie Oscar Mike</p>
-
-                            </div>
+                            Charlie Gallagher
+                        </div>
+                        <div
+                            class="text-sm md:text-lg lg:text-2xl font-semibold text-emerald-400"
+                        >
+                            Rust, Python, and Typescript Developer
                         </div>
                     </div>
+                    <div class="text-white text-2xl font-semibold m-auto pt-10">
+                        <button class="hover:underline hover:scale-110">
+                            <a
+                                href="https://www.linkedin.com/in/charles-gallagher-9891a414a/"
+                                target="_blank"
+                                class="[text-shadow:_0_40px_50px#10b981] text-white text-lg"
+                            >
+                                Contact Me
+                            </a>
+                        </button>
+                    </div>
                 </div>
+
+                <div class="relative h-[3px] z-0 opacity-50 w-full m-auto">
+                    <div
+                        class="absolute inset-0 bg-emerald-400 transform skew-y-0 origin-top"
+                    ></div>
+                </div>
+
+                <div class="mt-10 text-emerald-400 text-2xl font-semibold">
+                    About Me
+                </div>
+                <div class="mt-2 text-white text-md font-semibold">
+                    My name is Charlie Gallagher. I am a Software Engineer who
+                    specializes in Rust, but I also use Python, TypeScript, and
+                    many libraries and frameworks. Over the past year, I have
+                    been using Rust professionally for everything from data
+                    pipelines, web servers, and desktop applications to
+                    continuous AI detection pipelines running on embedded
+                    hardware. In my free time, I enjoy using the Embassy
+                    embedded Rust framework to program microcontrollers. I am
+                    currently working on a flight control system for a
+                    quadcopter.
+                </div>
+                <div class="mt-10 text-emerald-400 text-2xl font-semibold">
+                    Experience
+                </div>
+                <div
+                    class="mt-2 text-white text-md w-full h-fit flex flex-row font-semibold"
+                >
+                    <div class="mr-auto w-[50%]">
+                        Software Enginer <br />
+                        ThayerMahan AI Systems Group
+                    </div>
+                    <div class="ml-auto my-auto">2023 - present</div>
+                </div>
+
+                <div
+                    class="mt-2 text-white text-md w-full h-fit flex flex-row font-semibold"
+                >
+                    <div class="mr-auto">
+                        Research Assistant, <br />
+                        Institute of Biophysical Dynamics Scholar <br />
+                        Tian Lab at The University of Chicago
+                    </div>
+                    <div class="ml-auto my-auto">2019</div>
+                </div>
+
+                <div class="mt-10 text-emerald-400 text-2xl font-semibold">
+                    Education
+                </div>
+                <div
+                    class="mt-2 text-white text-md w-full h-fit flex flex-row font-semibold"
+                >
+                    <div class="mr-auto w-[50%]">
+                        Physics, B.A. <br />
+                        The University of Chicago
+                    </div>
+                    <div class="ml-auto my-auto">2017 - 2021</div>
+                </div>
+                <div
+                    class="mt-2 text-white text-md w-full h-fit flex flex-row font-semibold"
+                >
+                    <div class="mr-auto w-[50%]">
+                        Computer Science, M.S. <br />
+                        The University of Chicago
+                    </div>
+                    <div class="ml-auto my-auto">2021 - 2022</div>
+                </div>
+
+                <template id="project-row">
+                    <div class="h-[20%] w-full grid grid-cols-5"></div>
+                </template>
+
+                <template id="project-card">
+                    <div class="flex aspect-square m-2">
+                        <div
+                            class="bg-black hover:shadow-2xl shadow-emerald-400 m-auto hover:scale-110 flex min-w-[50px] w-[65px] md:w-[130px] lg:w-[200px] aspect-square border-3 border-white rounded-lg"
+                        >
+                            <a
+                                class="px-1 font-semibold m-auto text-center text-[8px] md:text-sm lg:text-lg hover:underline"
+                            ></a>
+                        </div>
+                    </div>
+                </template>
+
+                <div class="mt-10 text-emerald-400 text-2xl font-semibold">
+                    Open Source Contributions
+                </div>
+                <div class="mt-2 text-white text-md font-semibold">
+                    I am interested in a variety of crates, libraries, and
+                    packages.
+                </div>
+                <div
+                    class="w-full h-fit mt-10 m-2 text-white"
+                    id="open-source-prs"
+                ></div>
+
+                <div class="mt-10 text-emerald-400 text-2xl font-semibold">
+                    Projects
+                </div>
+                <div class="mt-2 text-white text-md font-semibold">
+                    Occassionally, I make small projects to help others or
+                    highlight my skills.
+                </div>
+                <div
+                    class="w-full h-fit mt-10 m-2 text-white"
+                    id="projects"
+                ></div>
+
+                <div class="mt-10 text-emerald-400 text-2xl font-semibold">
+                    Blog
+                </div>
+                <div class="mt-2 text-white text-md font-semibold">
+                    I post code walkthroughs and other knowledge I have gained
+                    here. This is a simple markdown to html conversion blog. At
+                    build time it converts markdown into html files with custom
+                    styling and even code highlighting.
+                </div>
+                <div
+                    id="blog-menu"
+                    class="mt-4 ml-2 text-white text-md w-fit min-h-[300px] mr-auto flex flex-col text-left"
+                ></div>
             </div>
         </div>
-    </div>
         <script type="module" src="/src/main.ts"></script>
     </body>
 </html>

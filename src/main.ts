@@ -5,13 +5,30 @@ const prs = document.getElementById("open-source-prs");
 
 const rows = 5;
 const codeExampleNames = [
-  "Rust Drone Tutorial",
-  "Rust Asteroids Clone",
-  "Python Asteroids Clone",
-  "Calculate Pi in Rust",
-  "Python Tank Game",
+  {
+    label: "Simple Rust Asteroids Clone",
+    href: "https://github.com/ctgallagher4/rocket-rs",
+  },
+  {
+    label: "TypeScript Website",
+    href: "https://ctgallagher4.github.io",
+  },
+  {
+    label: "Custom Markdown Blog",
+    href: "https://ctgallagher4.github.io",
+  },
 ];
-const prExampleNames = ["In progress"];
+const prExampleNames = [
+  {
+    label: "pixi-scroll-mask TypeScipt Library",
+    href: "https://www.npmjs.com/package/pixi-scroll-mask",
+  },
+];
+
+const articles = [
+  { name: "The Math Behind My Rocket Game", file: "rocket.html" },
+  { name: "How to Build a Simple Markdown Blog", file: "blog.html" },
+];
 
 if (
   templateCard instanceof HTMLTemplateElement &&
@@ -38,6 +55,15 @@ document.addEventListener("DOMContentLoaded", () => {
   addScrollToListener(constactButton, contactTarget);
 });
 
+const menu = document.getElementById("blog-menu");
+for (const [index, article] of articles.entries()) {
+  const a = document.createElement("a");
+  a.href = "/pages/" + article.file;
+  a.innerText = (index + 1).toString() + ") " + article.name;
+  a.className = "mr-auto hover:text-emerald-400 hover:underline";
+  menu?.appendChild(a);
+}
+
 function addScrollToListener(button: HTMLElement, target: HTMLElement) {
   if (button && target) {
     button.addEventListener("click", () => {
@@ -46,7 +72,7 @@ function addScrollToListener(button: HTMLElement, target: HTMLElement) {
   }
 }
 
-function calcYCols(names: string[], rows: number) {
+function calcYCols(names: { label: string; href: string }[], rows: number) {
   return Math.floor(names.length / rows) + 1;
 }
 
@@ -56,7 +82,7 @@ function fillCards(
   target: HTMLDivElement,
   xLength: number,
   yLength: number,
-  names: string[],
+  names: { label: string; href: string }[],
 ) {
   if (
     rowTemp instanceof HTMLTemplateElement &&
@@ -75,7 +101,9 @@ function fillCards(
         const cardElement = cardFragment.firstElementChild;
         const cardDiv = cardElement?.firstElementChild;
         if (cardElement && rowElement && cardDiv?.firstElementChild) {
-          cardDiv.firstElementChild.textContent = names[xLength * y + x];
+          const aTag = cardDiv.firstElementChild;
+          aTag.textContent = names[xLength * y + x].label;
+          (aTag as HTMLAnchorElement).href = names[xLength * y + x].href;
           rowElement.appendChild(cardElement);
         }
       }
