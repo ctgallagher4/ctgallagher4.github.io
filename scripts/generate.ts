@@ -44,7 +44,7 @@ async function buildPages() {
         <head>
           <meta charset="UTF-8" />
           <title>${file.replace(".md", "")}</title>
-          <link href="/src/style.css" type="text/css" rel="stylesheet" />
+          <link href="/style.css" rel="stylesheet" />
           <link href="https://unpkg.com/prismjs@1.29.0/themes/prism-tomorrow.css" rel="stylesheet" />
           <script src="https://unpkg.com/prismjs@1.29.0/prism.js"></script>
           <script src="https://unpkg.com/prismjs@1.29.0/components/prism-rust.min.js"></script>
